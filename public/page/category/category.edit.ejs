@@ -1,0 +1,52 @@
+<style>
+  .form-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  .btn {
+    margin: 15px 0 15px 120.4px;
+  }
+
+  label {
+    margin: 10px 0;
+  }
+</style>
+<div class="container form-container">
+  <h2>Category Form Edit</h2>
+  <form id="categoryForm">
+    <div class="form-group">
+      <label for="categoryName">category Name:</label>
+      <input id="categoryId" type="hidden" value="<%= category.id %>" />
+      <input
+        type="text"
+        value="<%= category.name %>"
+        class="form-control"
+        id="categoryName"
+        name="categoryName"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="categoryName">category Info:</label>
+      <input
+        type="text"
+        value="<%= category.info %>"
+        class="form-control"
+        id="categoryInfo"
+        name="categoryInfo"
+        required
+      />
+    </div>
+    <div class="buttonstyle" style="display: flex">
+      <button onclick="submitCategoryForm(event,'PUT')" class="btn btn-success">
+        Hoàn tất
+      </button>
+      <button onclick="CategoryList()" class="btn btn-primary">Quay lại</button>
+    </div>
+  </form>
+</div>

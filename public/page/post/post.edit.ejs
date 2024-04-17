@@ -1,0 +1,61 @@
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;"
+  class="container form-container">
+  <h2>Chỉnh sửa bài viết mới</h2>
+  <form style="width: 800px;" id="postForm">
+    <input type="hidden" id="" name="authorId" value="" />
+    <div class="form-group">
+      <label for="postImage" style="cursor: pointer;">
+        <img id="backgroundImage" name="postImage" src="<%=data.background%>" alt="#"
+          style="height: 300px; width: 400px ; border-radius: 15px; " />
+      </label>
+      <input type="file" id="postImage" name="postImage" accept="image/*" class="form-control" style="display: none;"
+        onchange="PreviewImage(this,'backgroundImage')"  />
+    </div>
+    <i>Nhấn vào để thay đổi ảnh nền bài viết</i>
+    </br>
+    <div class="form-group">
+      <label for="articleTitle">Tiêu đề bài viết:</label>
+      <input type="text" class="form-control" id="postTitle" value="<%=data.title%>" name="postTitle"
+         />
+    </div></br>
+    <div class="form-group">
+      <label for="articleTitle">Giới thiệu bài viết:</label>
+      <textarea type="text" class="form-control" id="postIntro"
+        name="postIntro" ><%=data.intro%></textarea>
+    </div>
+    <br />
+    <% data.Post_Contents.forEach(item => { %>
+        <div class="form-group">
+            <label for="Post_Contents_subheading">subheading:</label>
+            <input type="text" class="form-control" id="Post_Contents_subheading" name="Post_Contents_subheading"
+               value="<%= item.subheading%>"/>
+          </div>
+      <br />
+      <div class="form-group">
+          <label for="Post_Contents_contents">content:</label>
+          <textarea type="text" class="form-control" id="Post_Contents_contents" name="Post_Contents_contents"
+             ><%= item.contents%></textarea>
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="Post_Contents_image" style="cursor: pointer;">
+            <img id="Post_Contents_image" name="postImage" src="<%=item.image%>" alt="#"
+              style="height: 300px; width: 400px ; border-radius: 15px; " />
+          </label>
+          <input type="file" id="Post_Contents_image" name="Post_Contents_image" accept="image/*" class="form-control" style="display: none;"
+            onchange="PreviewImage(this,'Post_Contents_image')"  />
+        </div>
+        <i>Nhấn vào để thay đổi ảnh nền bài viết</i>
+        <br />
+        <div class="form-group">
+          <label for="Post_Contents_imageNote">imageNote:</label>
+          <input type="text" class="form-control" id="Post_Contents_imageNote" value="<%= item.imageNote%>" name="Post_Contents_imageNote"
+             />
+        </div>
+      <br />
+      <% }); %>
+    <br>
+    <button type="button" onclick="submitPostForm(event,'POST')" class="btn btn-success"> Hoàn tất </button>
+  </form>
+  </br>
+</div>

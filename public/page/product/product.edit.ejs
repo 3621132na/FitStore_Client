@@ -1,0 +1,70 @@
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .btn {
+        margin: 5px 0 5px 130.4px;
+    }
+
+    label {
+        margin: 10px 0;
+    }
+</style>
+<div class="container form-container">
+<h2>Product Form Edit</h2>
+<form id="productForm" onload="fetchDataAndBind()" >
+    <div class="form-group">
+        <label for="productName">product Name:</label>
+        <input id="productId" type="hidden" value="<%= product.id %>">
+        <input type="text" value="<%= product.name %>" class="form-control" id="productName" name="productName" required />
+    </div>
+    <div class="form-group">
+        <label for="category">Category:</label>
+        <select id="category"  class="form-control" name="category" required>
+            <option value="<%=product.category.id %>"><%=product.category.name %></option>
+        </select><br />
+    </div>
+    <div class="form-group">
+        <label for="brand">Brand:</label>
+        <select id="brand" class="form-control" name="brand" required>
+            <option value="<%=product.brand.id %>"><%=product.brand.name %></option>
+        </select><br />
+    </div>
+
+    <div class="form-group">
+        <label for="productImage">product Image:</label>
+        <img src="<%= product.image %>" height="200px" width="200px">
+        <input type="file" class="form-control-file" id="productImage" name="productImage" accept="image/*" required />
+    </div>
+    <div class="form-group">
+        <label for="productPrice">Product Price:</label>
+        <input type="number" value="<%= product.price %>" id="productPrice" name="productPrice" class="form-control" required /><br />
+    </div>
+
+    <div class="form-group">
+        <label for="productInfo">product Info:</label>
+        <textarea class="form-control" id="productInfo" name="productInfo" rows="4" required><%= product.info %></textarea>
+    </div>
+    <div class="form-group">
+        <label for="productStock">Product Stock:</label>
+        <input type="number" value="<%= product.stock %>" id="productStock" class="form-control" name="productStock" required /><br />
+    </div>
+    <p><strong>Đã bán:</strong>
+        <%= solds %>
+    </p>
+    <div class="buttonstyle" style="display:flex">
+        <button onclick="submitEditProductForm(event)" class="btn btn-success">
+            Hoàn tất
+        </button>
+        <button onclick="ProductList()" class="btn btn-primary">
+            Quay lại
+        </button>
+    </div>
+</form>
+</div>

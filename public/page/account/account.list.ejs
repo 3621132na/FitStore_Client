@@ -1,0 +1,31 @@
+<div class="container form-container">
+    <h1>Danh sách Account</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Avatar</th>
+            <th>Danh mục</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(item => { %>
+            <tr>
+                <td><%= item.id %></td>
+              <td><%= item.username %></td>
+              <td><%= item.name %></td>
+              <td><%= item.email %></td>
+              <td><img src="<%= item.image %>" alt="#" style="height: 50px; border-radius: 60px;"> </td>
+              <!-- Uncomment the following block if you want to include Edit and Delete buttons -->
+              <td colspan="2">
+                <a class="btn btn-primary" onclick="AccountEdit('<%= item.id %>')"">Thông tin</a>
+                <a class="btn btn-danger" onclick="AccountDelete('<%= item.id %>')"onclick="return confirm('Bạn chắc chắn muốn xoá user này?')">Xoá</a>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+  </div>

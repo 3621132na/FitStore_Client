@@ -1,0 +1,101 @@
+<%- include('includes/head.ejs')%>
+<body onload="sendMessage()">
+  <script>
+    function sendMessage() {
+      var message = "<%= message %>";
+      if (message) {
+        document.getElementById("passwordError").innerHTML = message;
+      }   
+    }
+  </script>
+  <%- include('includes/navigation.ejs')%>
+    <!-- Section: Design Block -->
+    <div id="root">
+    <section class="background-radial-gradient overflow-hidden">
+
+      <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+        <div class="row gx-lg-5 align-items-center mb-5">
+          <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+            <h1
+              class="my-5 display-5 fw-bold ls-tight"
+              style="color: hsl(218, 81%, 95%)"
+            >
+              Chào mừng bạn đến với <br />
+              <span style="color: hsl(218, 81%, 75%)">FITNESS STORE</span>
+            </h1>
+            <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+              Fitness Store Nhà nhập khẩu và phân phối tư vấn dinh dưỡng thể
+              hình, thể thao cao cấp chính hãng tại Việt Nam.
+            </p>
+          </div>
+
+          <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+            <div
+              id="radius-shape-1"
+              class="position-absolute rounded-circle shadow-5-strong"
+            ></div>
+            <div
+              id="radius-shape-2"
+              class="position-absolute shadow-5-strong"
+            ></div>
+
+            <div class="card bg-glass">
+              <div style="display: flex; justify-content: center;" class="card-body px-4 py-5 px-md-5">
+                <form action="/login" method="POST" enctype="application/x-www-form-urlencoded" >
+                  <h1 class="mb-3 h3 text-center">Đăng nhập</h1>
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <input
+                      name="email"
+                      id="form3Example3"
+                      class="form-control"
+                      placeholder="Username hoặc email"
+                      required
+                    />
+                  </div>
+
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <input
+                      type="password"
+                      name="password"
+                      id="form3Example4"
+                      class="form-control"
+                      placeholder="Mật khẩu"
+                      required
+                    />
+                  </div>
+
+                  <!-- Submit button -->
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-block mx-auto d-block mb-4">
+                    Đăng nhập
+                  </button>
+                    <div id="passwordError" style="color: red;"></div>
+                  <!-- Register buttons -->
+                  <div  class="text-center">
+                    <p>
+                      <a href="/forgot" >Quên mật khẩu?</a>
+                    </p>
+                  </div>  
+                  <div  class="text-center">
+                    <p>
+                      Bạn chưa có tài khoản?
+                      <a href="/signup" >Đăng ký ngay.</a>
+                    </p>
+                  </div>                    
+                  </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        
+      </div>
+    </section>
+  </div>
+    <!-- Section: Design Block -->
+  </div>
+
+  <%- include('includes/footer.ejs')%>

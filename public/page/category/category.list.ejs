@@ -1,0 +1,34 @@
+<div class="container form-container">
+    <h1>Danh sách các Category</h1>
+    <a class="btn btn-success" onclick="showCreatePopup()">Thêm category mới</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="text-align: center">Id</th>
+          <th style="text-align: center">Name</th>
+          <th style="text-align: center">Info</th>
+          <th style="text-align: center">Danh mục</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center">
+        <% data.forEach(item => { %>
+        <tr id="height-img">
+          <td><%= item.id %></td>
+          <td><%= item.name %></td>
+          <td><%= item.info %></td>
+          <td colspan="2">
+            <a class="btn btn-primary" onclick="CategoryEdit('<%= item.id %>')"
+              >Chỉnh sửa</a
+            >
+            <a
+              class="btn btn-danger"CategoryDelete
+              onclick="CategoryDelete('<%= item.id %>')"
+              onclick="return confirm('Bạn chắc chắn muốn xoá loại sản phẩm này?')"
+              >Xoá</a
+            >
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>

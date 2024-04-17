@@ -1,0 +1,45 @@
+<div class="container form-container" style="margin: auto">
+  <a onclick="PostList()" class="btn btn-warning" style="cursor: pointer;margin: 10px 0;"> &#11152; Quay lại</a>
+  <div class="title" style="display: flex">
+    <h1>
+      <%= data.title%>
+    </h1>
+  </div>
+  <div class="author" style="display: flex">
+    <img src="<%= data.author.image %>" alt="#" style="height: 60px; border-radius: 60px; margin-right: 10px" />
+    <div style="display: block; flex-direction: column">
+      <h6 style="color: #2d67ad; margin-top: 5px">
+        <%= data.author.name %>
+      </h6>
+      <p style="">
+        <%= data.date %>
+      </p>
+    </div>
+  </div>
+  <hr />
+  <img style="width: 100%;" src="<%= data.background %>" />
+  <br /><br /><br />
+  <h4>
+    <%= data.intro %>
+  </h4>
+  <br /><br /><br />
+  <div class="content">
+    <% data.Post_Contents.forEach(item=> { %>
+      <h3 style="text-decoration: underline; text-transform: uppercase; ">
+        <%= item.subheading %>
+      </h3>
+      <br />
+      <div>
+        <img style="width: 100%;" src="<%= item.image%>" alt="#" />
+        <br />
+        <p style="text-align: center"><i>
+            <%= item.imageNote%>
+          </i></p>
+      </div>
+      <p style="white-space: pre-line;">
+        <%= item.contents%>
+      </p>
+      <br />
+      <% }); %>
+  </div>
+</div>

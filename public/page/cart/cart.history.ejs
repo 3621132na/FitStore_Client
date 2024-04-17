@@ -1,0 +1,80 @@
+<%if(data.length == 0){%>
+  <div class="container text-center text-black">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3 class="mt-5">Lịch sử mua trống</h3>
+        <p class="lead" style="margin: 30px auto">
+          Hãy mua sắm và trải nghiệm thử FitStore nào &#128538;
+        </p>
+        <a class="btn btn-primary" style="margin: 10px auto" onclick="ProductView(); changeActiveState('product-nav')"
+          >Đến trang sản phẩm</a
+        >
+      </div>
+    </div>
+  </div>
+  <% } else { %>
+<div class="container form-container">
+  <h1>Lịch sử mua hàng</h1>
+  <div class="form" style="display: flex">
+    <div id="product-info">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Mã đơn hàng &#127380;</th>
+            <th>Ngày đặt hàng &#128340;</th>
+            <th>Tổng tiền &#128184;</th>
+            <th>Chi tiết &#9432;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(item => { %>
+          <tr class="productItem">
+            <td><%=item.id%></td>
+            <td><%=item.date%></td>
+            <td><%=item.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")%> <span>₫</span></td>
+            <td>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Hình</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng</th>
+                    <th>Đánh giá</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% item.Items.forEach(it => { %>
+                  <tr>
+                    <td><img src="<%=it.product.image%>" style="height: 100px" alt="" /></td>
+                    <td><%=it.product.name%></td>
+                    <td><%=it.product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")%><span>₫</span></td>
+                    <td><%=it.quantity%></td>
+                    <td><%=it.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")%><span>₫</span></td>
+                    <td>
+                      <div class="rating">
+                        <% if (it.rating) { %>
+                          <% for (let i = 1; i <= it.rating; i++) { %>
+                            <span class="star-rated" data-rating="<%= i %>" >&#9733;</span>
+                          <% } %>
+                        <% } else { %>
+                          <% for (let i = 1; i <= 5; i++) { %>
+                            <span class="star-unrated" style="cursor: pointer;" data-rating="<%= i %>" onclick="rating('<%= i %>','<%=item.id%>','<%=it.product.id%>')">&#9733;</span>
+                          <% } %>
+                        <% } %>
+                      </div>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% } %>

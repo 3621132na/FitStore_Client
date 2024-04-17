@@ -1,0 +1,16 @@
+<div id="popupForm" class="popup text-white">
+   <h2>Category Form</h2>
+
+   <span class="close-icon" onclick="closeCreatePopup()">X</span>
+   <form id="categoryForm">
+       <div class="form-group">
+           <label for="categoryName">Category Name:</label>
+           <input type="text" class="form-control" id="categoryName" name="categoryName" required>
+       </div>
+       <div class="form-group">
+        <label for="categoryInfo">Category Info:</label>
+        <input type="text" class="form-control" id="categoryInfo" name="categoryInfo" required>
+    </div>
+       <button onclick="submitCategoryForm(event,'POST')" class="btn btn-success" style="margin-left: 180.4px;">Hoàn tất</button>
+   </form>
+</div>

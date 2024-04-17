@@ -1,0 +1,40 @@
+<div style="margin-left:20px">
+  <hr />
+  <h2 style="text-decoration:underline">
+    <%= product.name%>
+  </h2>
+  <div class="detail" style="display:flex">
+    <div class="left" style="width:60%">
+      <img src="<%= product.image%>" alt="Hình ảnh" style="width:50%;">
+    </div>
+    <div class="right" style="width:40%; margin-top: 5%">
+      <h4 style="color:orangered; font-size:30px"><%= product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")%>₫%></h4>
+      <p style="font-size:18px; width:100%">Loại sản phẩm: <%= product.category.name%></p>
+      <p style="font-size:18px; width:100%">Nhãn hiệu: <%= product.brand.name%></p>
+      <p style="font-size:18px; width:100%">Thông tin: <%= product.info%></p>
+    <ul>
+      <% product.use_id_Uses.forEach(use => { %>
+      <li><strong>Name:</strong> <%= use.name %></li>
+      <% }); %>
+    </ul>
+    <p><strong>Đã bán:</strong> <%= solds %></p>
+      <div class="button" style="display:flex">
+        <a class="btn btn-primary" style="margin-right:20px" onclick="ProductView()" >Quay lại</a>
+        <%if(product.stock > 0){%>
+          <button type="submit" class="btn btn-success"
+                  onclick="AddToCart('<%= product.id%>')">
+            Thêm giỏ hàng</button>
+            <%} else%>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <br />
+  <p style="font-size:16px; width:100%">
+    <span><img src="/images/uytin.jpg" width="30px"></span>
+    Hàng chính hãng - Bảo hành 12 Tháng
+    <span><img src="/images/ship.jpg" width="30px"></span>
+    Giao hàng toàn quốc
+  </p>
+</div>

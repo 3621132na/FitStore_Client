@@ -1,0 +1,36 @@
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;"
+  class="container form-container">
+  <h2>Tạo bài viết mới</h2>
+  <form style="width: 800px;" id="postForm">
+    <input type="hidden" id="" name="authorId" value="" />
+    <div class="form-group">
+      <label for="postImage" style="cursor: pointer;">
+        <img id="backgroundImage" name="postImage" src="/images/background.jpg" alt="#"
+          style="height: 300px; width: 400px ; border-radius: 15px; " />
+      </label>
+      <input type="file" id="postImage" name="postImage" accept="image/*" class="form-control" style="display: none;"
+        onchange="PreviewImage(this,'backgroundImage')" required />
+    </div>
+    <i>Nhấn vào để thay đổi ảnh nền bài viết</i>
+    </br>
+    <div class="form-group">
+      <label for="articleTitle">Tiêu đề bài viết:</label>
+      <input type="text" class="form-control" id="postTitle" placeholder="Nhập tiêu đề bài viết" name="postTitle"
+        required />
+    </div></br>
+    <div class="form-group">
+      <label for="articleTitle">Giới thiệu bài viết:</label>
+      <textarea type="text" class="form-control" id="postIntro" placeholder="Nhập phần giới thiệu bài viết"
+        name="postIntro" required></textarea>
+    </div>
+  </form>
+  </br>
+  <label for="articleTitle">Nội dung bài viết:</label>
+  <br>
+  <div id="contents">
+  </div>
+  <br>
+  <button type="button" onclick="AddContent()" class="btn btn-success">Thêm nội dung</button>
+  <br>
+  <button type="button" onclick="submitPostForm(event,'POST')" class="btn btn-success"> Hoàn tất </button>
+</div>

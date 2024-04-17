@@ -1,0 +1,32 @@
+<h5 style="text-align: center;">Lượt bán</h5>
+<style>
+    table {
+        border-collapse: collapse; 
+    }
+
+    th, td {
+        border: none; 
+    }
+</style>
+<table >
+    <thead>
+        <tr>
+            <th style="text-align: right;">Sản phẩm</th>
+            <th style="text-align: left;">Lượt bán</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach(item=> { %>
+            <tr>
+                <td style="text-align: right;">
+                    <%=item.name%>
+                </td>
+                <td>
+                    <div style='background-color:greenyellow; width:<%=item.count*100%>px'>
+                        <%=item.count%>
+                    </div>
+                </td>
+            </tr>
+            <% }); %>
+    </tbody>
+</table>

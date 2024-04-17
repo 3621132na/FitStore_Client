@@ -1,0 +1,112 @@
+<%if(data.length == 0){%>
+<div class="container text-center text-black">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h3 class="mt-5">Giỏ hàng đang trống</h3>
+      <p class="lead" style="margin: 30px auto">
+        Hãy đến mục sản phẩm và chọn những gì bạn thích &#128538;
+      </p>
+      <a class="btn btn-primary" style="margin: 10px auto" onclick="ProductView(); changeActiveState('product-nav')"
+        >Đến trang sản phẩm</a
+      >
+    </div>
+  </div>
+</div>
+<% } else { %>
+<div class="container form-container">
+  <h1>Giỏ hàng</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><p>Chọn tất cả </p><input style="cursor: pointer; height: 25px;width: 25px;" type="checkbox" onchange="ChangeAll(this)" ></th>
+        <th>Tên sản phẩm</th>
+        <th>Hình</th>
+        <th>Số lượng</th>
+        <th>Giá &#128181;</th>
+        <th>Tổng</th>
+        <th>Xoá</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% let toTal = 0; %> <% data.forEach(item => {  %>
+      
+      <tr id="product<%=item.product.id%>item"  class="productItem">
+        <td><input id="<%=item.product.id%>" class="item-check" style="cursor: pointer; height: 25px;width: 25px;" type="checkbox" onchange="onItemChecked(this,'product<%=item.product.id%>number','<%=item.product.price%>')" ></td>
+        <td><%=item.product.name%></td>
+        <td><img src="<%=item.product.image%>" alt="Hình ảnh" style="height: 100px" /></td>
+        <td>
+          <div style="display: inline-flex">
+            <button id="product<%=item.product.id%>button" onclick="DecreaseByOne('<%=item.product.id%>','<%=item.product.price%>')" class="btn btn-danger <%= item.quantity === 1 ? 'disable-btn' : '' %>" >-
+            </button>
+            <input id="product<%=item.product.id%>number" style="width: 80px; text-align: center"
+              type="number" min="1" value="<%=item.number%>" attr="data-id= <%=item.product_id%>" class="form-control quantity"
+              readonly />
+            <button
+              onclick="IncreaseByOne('<%=item.product.id%>','<%=item.product.price%>')"
+              class="btn btn-success"
+            >
+              +
+            </button>
+          </div>
+        </td>
+        <td>
+          <label>
+            <span readonly
+              ><%=(item.product.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")%></span
+            >
+            <span>₫</span>
+          </label>
+        </td>
+        <td>
+          <label>
+            <span id="product<%=item.product.id%>total" class="itemTotal"
+              ><%=(item.number*item.product.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g,
+              ".")%></span
+            >
+            <span>₫</span>
+          </label>
+        </td>
+        <td>
+          <svg
+            style="cursor: pointer; fill: red"
+            onmouseout="this.style.transform='scale(1)'"
+            onmouseover="this.style.transform='scale(1.2)'"
+            onclick="RemoveItem('<%=item.product.id%>','<%=item.product.price%>')"
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="30"
+            height="30"
+            viewBox="0 0 128 128"
+          >
+            <path
+              d="M 49 1 C 47.34 1 46 2.34 46 4 C 46 5.66 47.34 7 49 7 L 79 7 C 80.66 7 82 5.66 82 4 C 82 2.34 80.66 1 79 1 L 49 1 z M 24 15 C 16.83 15 11 20.83 11 28 C 11 35.17 16.83 41 24 41 L 101 41 L 101 104 C 101 113.37 93.37 121 84 121 L 44 121 C 34.63 121 27 113.37 27 104 L 27 52 C 27 50.34 25.66 49 24 49 C 22.34 49 21 50.34 21 52 L 21 104 C 21 116.68 31.32 127 44 127 L 84 127 C 96.68 127 107 116.68 107 104 L 107 40.640625 C 112.72 39.280625 117 34.14 117 28 C 117 20.83 111.17 15 104 15 L 24 15 z M 24 21 L 104 21 C 107.86 21 111 24.14 111 28 C 111 31.86 107.86 35 104 35 L 24 35 C 20.14 35 17 31.86 17 28 C 17 24.14 20.14 21 24 21 z M 50 55 C 48.34 55 47 56.34 47 58 L 47 104 C 47 105.66 48.34 107 50 107 C 51.66 107 53 105.66 53 104 L 53 58 C 53 56.34 51.66 55 50 55 z M 78 55 C 76.34 55 75 56.34 75 58 L 75 104 C 75 105.66 76.34 107 78 107 C 79.66 107 81 105.66 81 104 L 81 58 C 81 56.34 79.66 55 78 55 z"
+            ></path>
+          </svg>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-md-12">
+      <h3> Tổng hoá đơn: 
+        <input id="hiddenBillTotal" type="number" style="display: none" value="<%=toTal%>" />
+        <span id="billTotal"> <%=toTal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %> </span>
+        <span>₫</span>
+      </h3>
+    </div>
+    <div class="col-md-12 text-center" style="margin: 10px 0">
+      <a onclick="RemoveAllItem()" class="btn btn-danger">Xoá toàn bộ sản phẩm</a>
+      <a class="btn btn-success" onclick="Payment()" style="margin: 0px 15px" >Xác nhận đơn hàng
+        <svg fill="white" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" >
+          <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+<% } %>
+<script>
+  console.log(data);
+</script>

@@ -1,0 +1,69 @@
+<div id="popupForm" class="popup">
+    <h1 style="color: white;">Thêm sản phẩm </h1>
+    <span class="close-icon" onclick="closeCreatePopup()">X</span>
+    <form id="myForm" class="text-white">
+        <div class="form-group">
+            <label for="productName">product Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productName"
+              name="productName"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" class="form-control" name="category" required></select
+            ><br />
+          </div>
+          <div class="form-group">
+            <label for="brand">Brand:</label>
+            <select id="brand" class="form-control" name="brand" required></select
+            ><br />
+          </div>
+          <div class="form-group">
+            <label for="productImage">product Image:</label>
+            <input
+              type="file"
+              class="form-control-file"
+              id="productImage"
+              name="productImage"
+              accept="image/*"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="productPrice">Product Price:</label>
+            <input
+              type="number"
+              id="productPrice"
+              name="productPrice"
+              class="form-control"
+              required
+            /><br />
+          </div>
+    
+          <div class="form-group">
+            <label for="productInfo">product Info:</label>
+            <textarea
+              class="form-control"
+              id="productInfo"
+              name="productInfo"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="productStock">Product Stock:</label>
+            <input
+              type="number"
+              id="productStock"
+              class="form-control"
+              name="productStock"
+              required
+            /><br />
+          </div>    
+    </form>
+    <button onclick="submitProductForm(event)" class="btn btn-success" style="margin-left: 180.4px;">Hoàn tất</button>
+</div>
