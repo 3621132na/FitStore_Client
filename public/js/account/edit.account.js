@@ -37,7 +37,6 @@ function Edit() {
     const btnSubmit = document.getElementById("btnSubmit");
     const Avt = document.getElementById("Avt");
     const text = document.getElementById("text");
-    fetchProvinces();
     // Toggle button visibility
     btnSubmit.style.display = "inline-block";
     btnEdit.style.display = "none";

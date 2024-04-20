@@ -157,11 +157,9 @@ async function SubmitOrder(event) {
   });
   var account_id = getCookie("id");
   var total = document.getElementById("hiddenBillTotal").value;
-  var ward_code = document.getElementById("wards").value;
   var formData = new FormData();
   formData.append("account_id", account_id);
   formData.append("total", total);
-  formData.append("ward_code", ward_code);
   formData.append('items', JSON.stringify(checkedItems));
   await axios("http://localhost/order/", {
     method: "POST",

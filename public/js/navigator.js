@@ -356,12 +356,9 @@ function PersonalAccountEdit() {
           script1.src = "/js/account/edit.account.js";
           var script2 = document.createElement("script");
           script2.src = "/js/form.handle.js";
-          var script3 = document.createElement("script");
-          script3.src = "/js/fetch.address.js";
           script1.onload = "fetchAccountDetails()";
           root.appendChild(script1);
           root.appendChild(script2);
-          root.appendChild(script3);
           document.getElementById("titlePage").innerHTML = "Quản lý tài khoản";
         })
         .catch((error) => console.error("Error fetching HTML file:", error));
